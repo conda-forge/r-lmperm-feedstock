@@ -1,7 +1,6 @@
 {% set version = '2.1.0' %}
 
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-lmperm
@@ -14,8 +13,7 @@ source:
   sha256: c3b6382932a364ed15d7ea77af6ef2eb2a60c195675f0f8d25d86ddc1d8342eb
 
 build:
-  merge_build_host: True  # [win]
-  number: 2
+  number: 3
 
   rpaths:
     - lib/R/lib/
@@ -24,7 +22,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}  # [not win]
+    - {{ stdlib("c") }}    # [not win]
     - {{ compiler('m2w64_c') }}  # [win]
+    - {{ stdlib("m2w64_c") }}    # [win]
     - {{ posix }}filesystem  # [win]
     - {{ posix }}make
     - {{ posix }}sed  # [win]
@@ -36,7 +36,6 @@ requirements:
 
   run:
     - r-base
-    - {{ native }}gcc-libs  # [win]
 
 test:
   commands:
