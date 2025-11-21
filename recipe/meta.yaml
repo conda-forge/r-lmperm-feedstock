@@ -1,4 +1,4 @@
-{% set version = "2.1.4" %}
+{% set version = "2.1.6" %}
 
 {% set posix = 'm2-' if win else '' %}
 
@@ -10,10 +10,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/lmPerm_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/lmPerm/lmPerm_{{ version }}.tar.gz
-  sha256: 3b1668bf72cb3252bad8ce684b243b3a4c236d365581e7c80c24c6838b921916
+  sha256: acc142c62131b321d742103a781f6e709f312d0c8727e249a229d364bd73eff1
 
 build:
-  number: 1
+  number: 0
 
   rpaths:
     - lib/R/lib/
